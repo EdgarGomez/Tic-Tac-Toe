@@ -8,11 +8,19 @@ public class BoardLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameObject.Instantiate(circle);
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(circle, new Vector2(Input.mousePosition.x, Input.mousePosition.y), Quaternion.identity);
+        }
 	}
+
+    void CreatePiece () {
+         Vector2 mousePosition = Input.mousePosition;
+         
+    }
 }

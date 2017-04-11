@@ -31,29 +31,8 @@ public class PlayerAction : MonoBehaviour {
     void Update()
     {
 
-        if(cells["A1"] == 1 && cells["A2"] == 1 && cells["A3"] == 1 ||
-            cells["A1"] == 1 && cells["B1"] == 1 && cells["C1"] == 1 ||
-            cells["A1"] == 1 && cells["B2"] == 1 && cells["C3"] == 1 ||
-            cells["A2"] == 1 && cells["B2"] == 1 && cells["C2"] == 1 ||
-            cells["A3"] == 1 && cells["B3"] == 1 && cells["C3"] == 1 ||
-            cells["A3"] == 1 && cells["B2"] == 1 && cells["C1"] == 1 ||
-            cells["B1"] == 1 && cells["B2"] == 1 && cells["B3"] == 1 ||
-            cells["C1"] == 1 && cells["C2"] == 1 && cells["C3"] == 1)
-        {
-            Debug.Log("Cross Wins");
-            Time.timeScale = 0;
-        } else if (cells["A1"] == 2 && cells["A2"] == 2 && cells["A3"] == 2 ||
-            cells["A1"] == 2 && cells["B1"] == 2 && cells["C1"] == 2 ||
-            cells["A1"] == 2 && cells["B2"] == 2 && cells["C3"] == 2 ||
-            cells["A2"] == 2 && cells["B2"] == 2 && cells["C2"] == 2 ||
-            cells["A3"] == 2 && cells["B3"] == 2 && cells["C3"] == 2 ||
-            cells["A3"] == 2 && cells["B2"] == 2 && cells["C1"] == 2 ||
-            cells["B1"] == 2 && cells["B2"] == 2 && cells["B3"] == 2 ||
-            cells["C1"] == 2 && cells["C2"] == 2 && cells["C3"] == 2)
-        {
-            Debug.Log("Circle Wins");
-            Time.timeScale = 0;
-        }
+        gameOver();
+
         // When left click of the mouse is clicked
         if (Input.GetMouseButtonDown(0))
         {
@@ -105,6 +84,34 @@ public class PlayerAction : MonoBehaviour {
                 }
             } 
             isCross = !isCross; 
+        }
+    }
+
+    void gameOver ()
+    {
+        if (cells["A1"] == 1 && cells["A2"] == 1 && cells["A3"] == 1 ||
+            cells["A1"] == 1 && cells["B1"] == 1 && cells["C1"] == 1 ||
+            cells["A1"] == 1 && cells["B2"] == 1 && cells["C3"] == 1 ||
+            cells["A2"] == 1 && cells["B2"] == 1 && cells["C2"] == 1 ||
+            cells["A3"] == 1 && cells["B3"] == 1 && cells["C3"] == 1 ||
+            cells["A3"] == 1 && cells["B2"] == 1 && cells["C1"] == 1 ||
+            cells["B1"] == 1 && cells["B2"] == 1 && cells["B3"] == 1 ||
+            cells["C1"] == 1 && cells["C2"] == 1 && cells["C3"] == 1)
+        {
+            Debug.Log("Cross Wins");
+            Time.timeScale = 0;
+        }
+        else if (cells["A1"] == 2 && cells["A2"] == 2 && cells["A3"] == 2 ||
+          cells["A1"] == 2 && cells["B1"] == 2 && cells["C1"] == 2 ||
+          cells["A1"] == 2 && cells["B2"] == 2 && cells["C3"] == 2 ||
+          cells["A2"] == 2 && cells["B2"] == 2 && cells["C2"] == 2 ||
+          cells["A3"] == 2 && cells["B3"] == 2 && cells["C3"] == 2 ||
+          cells["A3"] == 2 && cells["B2"] == 2 && cells["C1"] == 2 ||
+          cells["B1"] == 2 && cells["B2"] == 2 && cells["B3"] == 2 ||
+          cells["C1"] == 2 && cells["C2"] == 2 && cells["C3"] == 2)
+        {
+            Debug.Log("Circle Wins");
+            Time.timeScale = 0;
         }
     }
 }

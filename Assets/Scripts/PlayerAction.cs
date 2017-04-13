@@ -65,25 +65,29 @@ public class PlayerAction : MonoBehaviour {
     /// Changes the sprite image from a blank board piece to a cross or circle piece depending on the isCross boolean.
     /// </summary>
     /// <param name="currentBox"></param>
-    /// <returns>void</returns>
     void changeBoardPiece (GameObject currentBox)
     {
         if (currentBox.transform.gameObject.layer == 8)
         {
-            if (cells[(string)currentBox.transform.tag] == 0)
+            string currentBoxTag = (string)currentBox.transform.tag;
+            SpriteRenderer currentBoxSpriteRenderer = currentBox.transform.gameObject.GetComponent<SpriteRenderer>();
+
+            if (cells[currentBoxTag] == 0)
             {
                 if (isCross)
                 {
-                    currentBox.transform.gameObject.GetComponent<SpriteRenderer>().sprite = crossSprite;
-                    cells[(string)currentBox.transform.tag] = 1;
+                    currentBoxSpriteRenderer.sprite = crossSprite;
+                    cells[currentBoxTag] = 1;
                 }
                 else
                 {
-                    currentBox.transform.gameObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
-                    cells[(string)currentBox.transform.tag] = 2;
+                    currentBoxSpriteRenderer.sprite = circleSprite;
+                    cells[currentBoxTag] = 2;
                 }
-            } 
-            isCross = !isCross; 
+
+                //Must be changed only after click on an empty box.
+                isCross = !isCross;
+            }
         }
     }
 

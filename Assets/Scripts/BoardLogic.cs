@@ -5,7 +5,8 @@ using UnityEngine;
 public class BoardLogic : MonoBehaviour {
 
     // A simple boolean to switch between one kind of piece and the other
-    public bool isCross = true;
+    public bool isCross;
+    public bool canStart = false;
 
     public Dictionary<string, int> cells = new Dictionary<string, int>();
 
@@ -23,6 +24,24 @@ public class BoardLogic : MonoBehaviour {
         cells["C2"] = 0;
         cells["C3"] = 0;
 
+    }
+
+    void Update()
+    {
+        if (PlayerPrefs.HasKey("piece"))
+        {
+            string piece = PlayerPrefs.GetString("piece");
+            if (piece == "cross")
+            {
+                isCross = true;
+            } else
+            {
+                isCross = false;
+            }
+
+            canStart = true;
+
+        }
     }
 
     public void setIsCross(bool isCross)

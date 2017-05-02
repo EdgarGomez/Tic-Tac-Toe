@@ -15,4 +15,21 @@ public class ButtonsBehaviours : MonoBehaviour {
         SceneManager.LoadScene("playervsplayer");
     }
 
+    public void selectPlayerOne(bool isCross)
+    {
+        if (isCross)
+        {
+            PlayerPrefs.SetString("piece", "cross");   
+        }
+        else
+        {
+            PlayerPrefs.SetString("piece", "circle");
+        }
+    }
+
+    public void deletePlayerPrefs ()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
 }
